@@ -1,23 +1,38 @@
-export const orders = JSON.parse(localStorage.getItem('orders')) || [] ;
+// export const orders = JSON.parse(localStorage.getItem('orders')) || [] ;
 
-export function addOrder(order){
+// export function addOrder(order){
+//   orders.unshift(order);
+
+//   saveToStorage();
+// }
+
+// function saveToStorage(){
+//   localStorage.setItem('orders', JSON.stringify(orders));
+// }
+
+// export function getOrder(orderId) {
+//   let matchingOrder;
+
+//   orders.forEach((order) => {
+//     if (order.id.trim() === orderId.trim()) {
+//       matchingOrder = order;
+//     }
+//   });
+
+//   return matchingOrder;
+// }
+
+export const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+export function addOrder(order) {
   orders.unshift(order);
-
   saveToStorage();
 }
 
-function saveToStorage(){
+function saveToStorage() {
   localStorage.setItem('orders', JSON.stringify(orders));
 }
 
 export function getOrder(orderId) {
-  let matchingOrder;
-
-  orders.forEach((order) => {
-    if (order.id.trim() === orderId.trim()) {
-      matchingOrder = order;
-    }
-  });
-
-  return matchingOrder;
+  return orders.find(order => order.id?.trim() === orderId.trim()) || null;
 }
