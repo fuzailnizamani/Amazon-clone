@@ -76,7 +76,6 @@ export async function loadCartFetch() {
   try {
     const response = await fetch('https://supersimplebackend.dev/cart');
     const data = await response.text();
-    console.log(data);
     return data;
   } catch (error) {
     console.log('Error fetching cart:');
@@ -84,7 +83,7 @@ export async function loadCartFetch() {
 }
 loadCartFetch();
 
-export function loadCart(fun = () => {}){
+export function loadCart(fun = () => { }) {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('load', () => {
